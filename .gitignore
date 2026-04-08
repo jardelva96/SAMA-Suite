@@ -1,0 +1,19 @@
+# Build
+build/
+output/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# ROOT output
+*.root
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

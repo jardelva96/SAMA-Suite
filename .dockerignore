@@ -1,0 +1,8 @@
+# SAMA-Suite — .dockerignore
+output/
+build/
+.git/
+*.root
+plots/
+__pycache__/
+*.pyc

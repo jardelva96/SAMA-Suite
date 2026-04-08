@@ -1,0 +1,5 @@
+# Requisitos Python para análise
+uproot>=5.0
+awkward>=2.0
+matplotlib>=3.5
+numpy>=1.20

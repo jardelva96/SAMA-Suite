@@ -1,0 +1,24 @@
+# ====================================================================
+# run_electrons.mac
+# Simulação de elétrons aprisionados na SAMA
+# Espectro baseado em AE-8 MAX
+# ====================================================================
+
+/control/verbose 0
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+# Configuração do detector
+/sama/detector/nLayers 6
+/sama/detector/siThickness 300 um
+/sama/detector/shieldThickness 2 mm
+
+/run/initialize
+
+# Configuração do gerador — espectro de elétrons aprisionados
+/sama/generator/spectrum electrons
+/sama/generator/maxTheta 30 deg
+
+# Executar 10000 eventos
+/run/beamOn 10000

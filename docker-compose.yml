@@ -1,0 +1,18 @@
+# ============================================================================
+# SAMA-Suite — Docker Compose
+# Comando único: docker compose run sim
+# ============================================================================
+
+services:
+  sim:
+    build: .
+    container_name: sama-suite
+    volumes:
+      # Resultados (ROOT + gráficos) ficam acessíveis no host
+      - ./output:/opt/sama-suite/output
+    command: all
+    # Para rodar simulações específicas, use:
+    #   docker compose run sim protons
+    #   docker compose run sim electrons
+    #   docker compose run sim sama
+    #   docker compose run sim shielding

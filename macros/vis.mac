@@ -1,0 +1,45 @@
+# ====================================================================
+# vis.mac
+# Configuração de visualização do SAMA-Suite detector
+# ====================================================================
+
+# Abrir driver OpenGL
+/vis/open OGL 800x600-0+0
+
+# Desabilitar auto-refresh durante configuração
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+
+# Desenhar geometria
+/vis/drawVolume
+
+# Eixos de referência (50 mm)
+/vis/scene/add/axes 0 0 0 50 mm
+
+# Estilo de visualização
+/vis/viewer/set/viewpointThetaPhi 45 30
+/vis/viewer/set/style surface
+/vis/viewer/set/auxiliaryEdge true
+/vis/viewer/set/lineSegmentsPerCircle 100
+
+# Trajetórias coloridas por tipo de partícula
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set proton red
+/vis/modeling/trajectories/drawByParticleID-0/set e- blue
+/vis/modeling/trajectories/drawByParticleID-0/set e+ green
+/vis/modeling/trajectories/drawByParticleID-0/set gamma yellow
+/vis/modeling/trajectories/drawByParticleID-0/set neutron white
+
+# Mostrar hits
+/vis/scene/add/hits
+
+# Acumular trajetórias entre runs
+/vis/scene/endOfEventAction accumulate
+
+# Re-habilitar auto-refresh
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings
+
+# Background escuro (simula espaço)
+/vis/viewer/set/background 0.05 0.05 0.1 1.0

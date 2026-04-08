@@ -1,0 +1,27 @@
+# ====================================================================
+# run_trapped_spectrum.mac
+# Simulação com espectro misto representativo da SAMA
+# 70% prótons aprisionados + 25% elétrons + 5% GCR
+# Condições: altitude ~500 km, L ~ 1.2, B/B0 ~ 3
+# ====================================================================
+
+/control/verbose 0
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+# Configuração do detector padrão
+/sama/detector/nLayers 6
+/sama/detector/siThickness 300 um
+/sama/detector/shieldThickness 2 mm
+/sama/detector/detectorRadius 15 mm
+/sama/detector/layerSpacing 5 mm
+
+/run/initialize
+
+# Espectro misto da SAMA
+/sama/generator/spectrum sama
+/sama/generator/maxTheta 30 deg
+
+# Executar 50000 eventos (boa estatística)
+/run/beamOn 50000

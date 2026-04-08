@@ -1,0 +1,10 @@
+# ====================================================================
+# init_vis.mac
+# Inicialização com visualização para modo interativo
+# ====================================================================
+
+# Inicializar o run manager
+/run/initialize
+
+# Executar macro de visualização
+/control/execute macros/vis.mac

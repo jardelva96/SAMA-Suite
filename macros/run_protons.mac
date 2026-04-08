@@ -1,0 +1,26 @@
+# ====================================================================
+# run_protons.mac
+# Simulação de prótons aprisionados na SAMA
+# Espectro baseado em AP-8 MIN para L ~ 1.2
+# ====================================================================
+
+# Silêncio na saída
+/control/verbose 0
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+# Configuração do detector
+/sama/detector/nLayers 6
+/sama/detector/siThickness 300 um
+/sama/detector/shieldThickness 2 mm
+
+# Inicializar
+/run/initialize
+
+# Configuração do gerador — espectro de prótons aprisionados
+/sama/generator/spectrum protons
+/sama/generator/maxTheta 30 deg
+
+# Executar 10000 eventos
+/run/beamOn 10000

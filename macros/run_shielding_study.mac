@@ -1,0 +1,52 @@
+# ====================================================================
+# run_shielding_study.mac
+# Estudo paramétrico de blindagem:
+# Varia espessura de Al para otimizar proteção vs peso
+# ====================================================================
+
+/control/verbose 0
+/run/verbose 1
+
+# ================================================================
+# Caso 1: Blindagem mínima (1 mm Al)
+# ================================================================
+/sama/detector/shieldThickness 1 mm
+/sama/detector/nLayers 6
+/sama/detector/siThickness 300 um
+
+/run/initialize
+/sama/generator/spectrum sama
+/sama/generator/maxTheta 30 deg
+
+/run/beamOn 20000
+
+# Reinicializar geometria para próxima configuração
+/run/reinitializeGeometry
+
+# ================================================================
+# Caso 2: Blindagem padrão (2 mm Al)
+# ================================================================
+/sama/detector/shieldThickness 2 mm
+/run/initialize
+/sama/generator/spectrum sama
+/run/beamOn 20000
+
+/run/reinitializeGeometry
+
+# ================================================================
+# Caso 3: Blindagem reforçada (4 mm Al)
+# ================================================================
+/sama/detector/shieldThickness 4 mm
+/run/initialize
+/sama/generator/spectrum sama
+/run/beamOn 20000
+
+/run/reinitializeGeometry
+
+# ================================================================
+# Caso 4: Blindagem pesada (8 mm Al)
+# ================================================================
+/sama/detector/shieldThickness 8 mm
+/run/initialize
+/sama/generator/spectrum sama
+/run/beamOn 20000
