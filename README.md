@@ -8,14 +8,64 @@
 
 ---
 
+## Quick Start — Rodar com 1 Comando
+
+**Único pré-requisito:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado e rodando.
+
+```bash
+# Windows (PowerShell)
+git clone https://github.com/jardelva96/SAMA-Suite.git
+cd SAMA-Suite
+.\run.ps1
+
+# Linux / macOS
+git clone https://github.com/jardelva96/SAMA-Suite.git
+cd SAMA-Suite
+chmod +x run.sh && ./run.sh
+```
+
+**O que acontece:** compila GEANT4 + projeto automaticamente, executa simulação com espectro misto da SAMA (50k eventos), gera gráficos de análise. Os resultados ficam na pasta `output/`.
+
+> **Tempo de execução:**
+> - **Primeira vez: ~40-60 minutos** — o Docker compila o GEANT4 inteiro (~1.5M linhas de C++). Isso é normal e acontece **apenas uma vez**. O Docker faz cache da compilação.
+> - **Execuções seguintes: ~2-5 minutos** — usa o cache do Docker, só executa a simulação.
+
+### Simulações específicas (mais rápidas)
+
+```bash
+.\run.ps1 protons      # Só prótons aprisionados (10k eventos, ~1 min)
+.\run.ps1 electrons    # Só elétrons aprisionados (10k eventos, ~1 min)
+.\run.ps1 sama         # Espectro misto SAMA (50k eventos, ~5 min)
+.\run.ps1 shielding    # Estudo de blindagem 1/2/4/8 mm Al (~10 min)
+.\run.ps1 bash         # Shell interativo no container
+```
+
+### Resultados gerados
+
+```
+output/
+├── sama_suite_output.root    # Dados brutos (histogramas + ntuples)
+└── plots/
+    ├── energy_spectra.png    # Espectros de energia e perfil de Bragg
+    ├── bragg_curves.png      # Deposição por camada (p vs e⁻)
+    ├── dedx_vs_energy.png    # dE/dx vs E (identificação de partículas)
+    ├── hit_positions.png     # Distribuição espacial XY
+    ├── detection_efficiency.png  # Eficiência vs energia
+    ├── delta_e_e.png         # Técnica ΔE-E (separação p/e⁻)
+    └── count_rates.png       # Taxa de contagem por camada
+```
+
+---
+
 ## Sumário
 
+- [Quick Start](#quick-start--rodar-com-1-comando)
 - [Descrição do Projeto](#descrição-do-projeto)
 - [Física da SAMA](#física-da-sama)
 - [Arquitetura dos Detectores](#arquitetura-dos-detectores)
 - [Estrutura do Código](#estrutura-do-código)
 - [Modelos Físicos Implementados](#modelos-físicos-implementados)
-- [Compilação e Execução](#compilação-e-execução)
+- [Compilação Manual (sem Docker)](#compilação-manual-sem-docker)
 - [Macros de Simulação](#macros-de-simulação)
 - [Análise de Dados](#análise-de-dados)
 - [Resultados Esperados](#resultados-esperados)
@@ -168,45 +218,6 @@ SAMA-Suite-Sim/
   - Direção do momento
 
 - A **Faraday Cup** registra partículas que penetram no volume interno (medida de corrente/fluência).
-
----
-
-## Rodar com 1 Comando (Docker)
-
-**Único pré-requisito:** [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-
-### Comando único — pipeline completo (simulação + análise + gráficos)
-
-```bash
-# Windows (PowerShell)
-.\run.ps1
-
-# Linux / macOS
-chmod +x run.sh && ./run.sh
-```
-
-Os resultados ficam na pasta `output/`:
-- `sama_suite_output.root` — dados brutos
-- `plots/*.png` — gráficos de análise
-
-### Simulações específicas
-
-```bash
-# Apenas prótons aprisionados (10k eventos, mais rápido)
-.\run.ps1 protons          # Windows
-./run.sh protons           # Linux
-
-# Apenas elétrons
-.\run.ps1 electrons
-
-# Estudo de blindagem (1/2/4/8 mm Al)
-.\run.ps1 shielding
-
-# Shell interativo dentro do container
-.\run.ps1 bash
-```
-
-> **Nota:** O primeiro build compila GEANT4 dentro do Docker (~30 min, apenas uma vez). Execuções seguintes são instantâneas.
 
 ---
 
