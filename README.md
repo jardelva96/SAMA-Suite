@@ -1,11 +1,6 @@
 # SAMA-Suite Detector Simulation
 
 **Simulação GEANT4 do sistema de detectores para monitoramento de fluxo de partículas e densidade do plasma na Anomalia Magnética do Atlântico Sul (SAMA)**
-
-> Projeto vinculado ao Processo FAPESP 2025/09361-3  
-> Instituto Nacional de Pesquisas Espaciais (INPE)  
-> Divisão de Heliofísica, Ciências Planetárias e Aeronomia (DIHPA)
-
 ---
 
 ## Quick Start — Rodar com 1 Comando
