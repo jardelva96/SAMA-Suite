@@ -354,7 +354,7 @@ A variação da espessura de Al permite otimizar a razão entre proteção contr
 
 ## Autor
 
-Desenvolvido como demonstração de competência em simulação GEANT4 para o projeto SAMA-Suite (Processo FAPESP 2025/09361-3) no INPE.
+Desenvolvido como demonstração de competência em simulação GEANT4 aplicada ao estudo do ambiente de radiação da Anomalia Magnética do Atlântico Sul (SAMA).
 
 ---
 

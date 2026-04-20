@@ -6,9 +6,6 @@
 // de fluxo de partículas e densidade do plasma na Anomalia Magnética
 // do Atlântico Sul (SAMA).
 //
-// Projeto FAPESP 2025/09361-3
-// Instituto Nacional de Pesquisas Espaciais (INPE)
-//
 // Uso:
 //   ./sama_suite                      # modo interativo com visualização
 //   ./sama_suite macros/run_protons.mac  # modo batch
